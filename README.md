@@ -23,7 +23,7 @@ After that, you can add `Leeroy\\Sentry` to the modules section of the sailcms p
 "sailcms": {
   "containers": ["Spec"],
   "modules": [
-    "Leeroy\\Sentry"
+    "Leeroy\\SentryIO"
   ],
   "search": {}
 }
