@@ -1,6 +1,6 @@
 {
     "manifestVersion": 1,
-    "requiredMinimumVersion": 3,
+    "requiredMinimumVersion": "<=3.0.0",
     "packageType": "module",
     "namespace": "Leeroy\\SentryIO"
 }
