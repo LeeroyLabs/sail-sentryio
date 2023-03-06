@@ -1,0 +1,21 @@
+{
+    "name": "leeroy/sail-sentryio",
+    "description": "Sentry.io Module for SailCMS",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Leeroy\\Sentry\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marc Giroux",
+            "email": "marc@leeroy.ca"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "sentry/sdk": "^3.3"
+    }
+}
