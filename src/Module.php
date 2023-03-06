@@ -1,6 +1,6 @@
 <?php
 
-namespace SentryIO;
+namespace Leeroy\SentryIO;
 
 use SailCMS\Collection;
 use \SailCMS\Contracts\AppModule;

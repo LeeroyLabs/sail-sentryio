@@ -1,6 +1,6 @@
 <?php
 
-namespace SentryIO;
+namespace Leeroy\SentryIO;
 
 use Exception;
 use JsonException;
