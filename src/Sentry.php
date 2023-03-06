@@ -8,6 +8,8 @@ use SailCMS\Collection;
 use SailCMS\Database\Model;
 use SailCMS\Sail;
 use Sentry\State\Scope;
+use SailCMS\Models\User;
+use SailCMS\Http\Request;
 
 use function Sentry\captureException;
 use function Sentry\captureLastError;
@@ -34,16 +36,19 @@ class Sentry
         configureScope(function (Scope $scope) use ($systemTags): void
         {
             $scope->setContext('sailcms', [
-                'version' => Sail::SAIL_VERSION,
-                'php' => PHP_VERSION,
-                'os' => PHP_OS
+                'version' => Sail::SAIL_VERSION
             ]);
+
+            if (!empty(User::$currentUser)) {
+                $request = new Request();
+                $scope->setUser(['id' => User::$currentUser->id, 'ip' => $request->ipAddress()]);
+            }
 
             if (count($systemTags) > 0) {
                 $finalTags = [];
 
-                foreach ($systemTags as $tag) {
-                    $finalTags[] = env('SENTRY_ORG', 'sailcms') . '.' . $tag;
+                foreach ($systemTags as $tag => $value) {
+                    $finalTags[env('SENTRY_ORG', 'sailcms') . '.' . $tag] = $value;
                 }
 
                 $scope->setTags($finalTags);
@@ -98,8 +103,8 @@ class Sentry
 
             $finalTags = [];
 
-            foreach ($tags as $tag) {
-                $finalTags[] = env('SENTRY_ORG', 'sailcms') . '.' . $tag;
+            foreach ($tags as $tag => $value) {
+                $finalTags[env('SENTRY_ORG', 'sailcms') . '.' . $tag] = $value;
             }
 
             $scope->setTags($finalTags);
