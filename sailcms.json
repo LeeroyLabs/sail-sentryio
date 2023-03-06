@@ -1,5 +1,6 @@
 {
     "manifestVersion": 1,
     "requiredMinimumVersion": 3,
-    "packageType": "module"
+    "packageType": "module",
+    "namespace": "Leeroy\\Sentry"
 }
