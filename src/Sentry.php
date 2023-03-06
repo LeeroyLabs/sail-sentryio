@@ -30,7 +30,10 @@ class Sentry
      */
     public static function init(array $systemTags = []): void
     {
-        init(['dsn' => env('SENTRY_DSN', '')]);
+        $env = env('ENVIRONMENT', 'dev');
+        $environment = ($env === 'dev') ? 'development-stage' : 'production';
+
+        init(['dsn' => env('SENTRY_DSN', ''), 'environment' => $environment]);
 
         // Set basic scope (sail version)
         configureScope(function (Scope $scope) use ($systemTags): void
@@ -50,9 +53,6 @@ class Sentry
                 foreach ($systemTags as $tag => $value) {
                     $finalTags[env('SENTRY_ORG', 'sailcms') . '.' . $tag] = $value;
                 }
-
-                $env = env('ENVIRONMENT', 'dev');
-                $finalTags['environment'] = ($env === 'dev') ? 'development-stage' : 'production';
 
                 $scope->setTags($finalTags);
             }
