@@ -3,8 +3,8 @@
 namespace Leeroy\SentryIO;
 
 use SailCMS\Collection;
-use \SailCMS\Contracts\AppModule;
-use \SailCMS\Types\ModuleInformation;
+use SailCMS\Contracts\AppModule;
+use SailCMS\Types\ModuleInformation;
 
 class Module implements AppModule
 {
