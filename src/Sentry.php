@@ -51,6 +51,9 @@ class Sentry
                     $finalTags[env('SENTRY_ORG', 'sailcms') . '.' . $tag] = $value;
                 }
 
+                $env = env('ENVIRONMENT', 'dev');
+                $finalTags['environment'] = ($env === 'dev') ? 'development-stage' : 'production';
+
                 $scope->setTags($finalTags);
             }
         });
