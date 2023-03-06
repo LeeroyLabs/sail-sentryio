@@ -31,7 +31,7 @@ class Sentry
     public static function init(array $systemTags = []): void
     {
         $env = env('ENVIRONMENT', 'dev');
-        $environment = ($env === 'dev') ? 'development-stage' : 'production';
+        $environment = ($env === 'dev') ? 'development' : $env;
 
         init(['dsn' => env('SENTRY_DSN', ''), 'environment' => $environment]);
 
