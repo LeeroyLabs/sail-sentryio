@@ -10,12 +10,11 @@ class Module implements AppModule
 {
     public function init(): void
     {
-        
+        Sentry::init();
     }
     
     public function info(): ModuleInformation
     {
-        Sentry::init();
         return new ModuleInformation(
             'SentryIO', 
             'SailCMS official Sentry.io Module', 
